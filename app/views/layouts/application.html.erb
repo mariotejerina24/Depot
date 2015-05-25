@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Depot2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+
+<body class="jumbotron">
+<div>
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> STORE</a></li>
+	  <li role="presentation"><a href="/products#index">Products</a></li>
+	  <li role="presentation"><a href="/editorials#index">Editorials</a></li>
+	  <li role="presentation"><a href="/categories#index">Categories</a></li>
+	  <li>
+	  	<% if current_user %>
+   
+    	<%= link_to('Logout', destroy_user_session_path, method: :delete)%>
+
+		<% else %>
+    	<%= link_to 'Login', new_user_session_path %>
+		<% end %>
+	  </li>
+	</ul>
+<br>
+
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %> alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <%= value %>
+</div>
+<% end %>
+
+<%= yield %>
+
+</div>
+<br>
+Depot - Mario Tejerina © <%= Time.now.year %>
+</body>
+</html>
+
+
+

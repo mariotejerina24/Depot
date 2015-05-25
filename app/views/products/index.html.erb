@@ -1,0 +1,19 @@
+
+
+<h1>Listing Products</h1>
+
+<div id="products_search_results">
+  <%= render 'products/list' %>
+</div>
+
+
+<%= form_tag(products_path, :method => "get", id: "search-form") do %>
+<div class="form-group">
+  <%= text_field_tag :search, params[:search], placeholder: "Buscar", :class => "form-control" %>
+  <%= submit_tag "Buscar", :name => nil, :class => "btn btn-default"  %>
+  <span id="error"></span>
+</div>
+<% end %>
+
+<br />
+<%= link_to 'New Product', new_product_path, :class => "btn btn-default" %>
